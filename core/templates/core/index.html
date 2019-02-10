@@ -1,0 +1,61 @@
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% load index %}
+
+
+
+<div class="cd-schedule loading">
+	<div class="timeline">
+		<ul>
+			{% for slot in slots  %}
+			<li><span>{{slot.init}}</span></li>
+			{% endfor %}
+		</ul>
+	</div> <!-- .timeline -->
+
+	<div class="events">
+		<ul>
+			{% for  day in days  %}
+
+				<li class="events-group">
+					<div class="top-info"><span>{{day}}</span></div>
+					<ul>
+						{% for slot in slots %}
+							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
+								<a href="#0">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			
+			{% endfor %}
+
+		</ul>
+	</div>
+
+	<div class="event-modal">
+		<header class="header">
+			<div class="content">
+				<span class="event-date"></span>
+				<h3 class="event-name"></h3>
+			</div>
+
+			<div class="header-bg"></div>
+		</header>
+
+		<div class="body">
+			<div class="event-info"></div>
+			<div class="body-bg"></div>
+		</div>
+
+		<a href="#0" class="close">Close</a>
+	</div>
+
+	<div class="cover-layer"></div>
+</div> <!-- .cd-schedule -->
+
+{% endblock content %}

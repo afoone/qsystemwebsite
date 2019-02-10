@@ -1,0 +1,147 @@
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% load index %}
+<div class="container">
+ <div class='row  justify-content-md-center'>
+	<h1>{{service_name}}</h1>
+	</div>
+	 <div class='row justify-content-md-center'>
+
+	<h2>Semana del {{date_from | date}} al {{date_to | date}}</h2>
+	</div>
+
+</div>
+
+{% load monday %}
+
+
+<div class='container'>
+	<div class='row  justify-content-md-center'>
+		{% if actual_week > 0 %}
+			<a href="{% url 'service-calendar' service_id actual_week|add:-1 %}" class="btn btn-primary ">Semana anterior</a>
+		{% endif %}
+
+		{% if actual_week < weeks_in_advance %}
+			<a href="{% url 'service-calendar' service_id actual_week|add:1 %}" class="btn btn-primary ">Semana siguiente</a>
+		{% endif %}
+	</div>
+</div>
+
+<div class="cd-schedule loading">
+
+	<div class="timeline">
+		<ul>
+			{% for slot in slots  %}
+			<li><span>{{slot.init}}</span></li>
+			{% endfor %}
+		</ul>
+	</div> <!-- .timeline -->
+
+	<div class="events">
+		<ul>
+			{% if available_dates.0 %}
+				<li class="events-group" >
+					<div class="top-info"><div class="text-center">Lunes</div><div class="text-center">{{now|monday|date}}</div></div>
+					<ul>
+						{% for slot in slots %}
+							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
+								
+								<a href="{% url 'appointment-create' %}">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+
+			{% if available_dates.1 %}
+
+				<li class="events-group">
+					<div class="top-info"><div class="text-center">Martes</div><div class="text-center">{{now|tuesday|date}}</div></div>
+					<ul>
+						{% for slot in slots %}
+							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
+								
+								<a href="{% url 'appointment-create' %}">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+				{% endif %}
+
+			{% if available_dates.2 %}
+
+				<li class="events-group">
+					<div class="top-info"><div class="text-center">Miércoles</div><div class="text-center">{{now|wednesday|date}}</div></div>
+					<ul>
+						{% for slot in slots %}
+							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
+								
+								<a href="{% url 'appointment-create' %}">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+
+			{% if available_dates.3 %}
+
+				<li class="events-group">
+					<div class="top-info"><div class="text-center">Jueves</div><div class="text-center">{{now|thursday|date}}</div></div>
+					<ul>
+						{% for slot in slots %}
+							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
+								
+								<a href="{% url 'appointment-create' %}">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+			{% if available_dates.4 %}
+
+				<li class="events-group">
+					<div class="top-info"><div class="text-center">Viernes</div><div class="text-center">{{now|friday|date}}</div></div>
+					<ul>
+						{% for slot in slots %}
+							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
+								
+								<a href="{% url 'appointment-create' %}">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+
+		</ul>
+	</div>
+
+	<div class="event-modal">
+		<header class="header">
+			<div class="content">
+				<span class="event-date"></span>
+				<h3 class="event-name"></h3>
+			</div>
+
+			<div class="header-bg"></div>
+		</header>
+
+		<div class="body">
+			<div class="event-info"></div>
+			<div class="body-bg"></div>
+		</div>
+
+		<a href="#0" class="close">Close</a>
+	</div>
+
+	<div class="cover-layer"></div>
+</div> <!-- .cd-schedule -->
+
+{% endblock content %}

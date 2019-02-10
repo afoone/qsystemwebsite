@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h1 class="h1">Servicios disponibles</h1>
+<ul>
+{% for service in object_list %}
+
+    <a  class="btn btn-primary btn-lg btn-block" href = "{% url 'service-calendar' service.serviceID 0 %}">{{service.description}}</a>
+    
+{% empty %}
+    <li>En este momento no hay ningún servicio disponible para su cita por Internet.</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
