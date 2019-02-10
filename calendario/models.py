@@ -53,5 +53,7 @@ class CalendarConfig(models.Model):
     time = models.ManyToManyField(CalendarTime)
     service = models.ForeignKey(citas_models.Service, on_delete=models.CASCADE)
     slotSize = models.IntegerField(verbose_name="Tamaño del hueco en minutos", default=15)
+    appointmentsPerSlot = models.IntegerField(verbose_name="Máximo número de citas por tramo",  default=1)
+
 
     

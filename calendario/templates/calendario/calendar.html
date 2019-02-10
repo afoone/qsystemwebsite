@@ -3,6 +3,18 @@
 
 {% block content %}
 
+<div class="well well-sm">
+{{occupation.monday}}
+
+<ul>
+
+<li>{{occupation.monday.0}}</li>
+<li>{{occupation.monday.0.hora|time}}</li>
+
+</ul>
+
+</div>
+
 {% load index %}
 <div class="container">
  <div class='row  justify-content-md-center'>
