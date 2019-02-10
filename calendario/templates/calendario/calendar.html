@@ -49,7 +49,7 @@
 						{% for slot in slots %}
 							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
 								
-								<a href="{% url 'appointment-create' %}">
+								<a href="{% url 'appointment-create' slot.init|safe now|monday|date:"dmy"|safe %}">
 								</a>
 							</li>
 						{% endfor %}
@@ -65,7 +65,7 @@
 						{% for slot in slots %}
 							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
 								
-								<a href="{% url 'appointment-create' %}">
+								<a href="{% url 'appointment-create' slot.init|safe now|tuesday|date:"dmy"|safe %}">
 								</a>
 							</li>
 						{% endfor %}
@@ -81,7 +81,7 @@
 						{% for slot in slots %}
 							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
 								
-								<a href="{% url 'appointment-create' %}">
+								<a href="{% url 'appointment-create' slot.init|safe now|wednesday|date:"dmy"|safe %}">
 								</a>
 							</li>
 						{% endfor %}
@@ -97,7 +97,7 @@
 						{% for slot in slots %}
 							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
 								
-								<a href="{% url 'appointment-create' %}">
+								<a href="{% url 'appointment-create' slot.init|safe now|thursday|date:"dmy"|safe %}">
 								</a>
 							</li>
 						{% endfor %}
@@ -112,7 +112,7 @@
 						{% for slot in slots %}
 							<li class="single-event" data-start="{{slot.init}}" data-end="{{slot.end}}" data-content="event-abs-circuit" data-event="event-3">
 								
-								<a href="{% url 'appointment-create' %}">
+								<a href="{% url 'appointment-create' slot.init|safe now|friday|date:"dmy"|safe %}">
 								</a>
 							</li>
 						{% endfor %}

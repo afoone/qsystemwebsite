@@ -19,7 +19,7 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    path('create', views.AppointmentCreate.as_view(), name = "appointment-create"),
+    path('create/<cita_time>/<cita_date>/', views.AppointmentCreate.as_view(), name = "appointment-create"),
     path('', views.ServiceList.as_view(), name = "service-list"),
 
 ]
