@@ -41,7 +41,7 @@ def get_occupation(lastmonday, nextmonday, max_appointments_per_slot):
                         if slot['total'] >= max_appointments_per_slot:  
                                 print('total')
                                 print(slot['total'])
-                                slotting.append(slot['hora'])
+                                slotting.append(slot['hora'].strftime('%H:%M'))
                 occupated[day] = slotting
                 
 
