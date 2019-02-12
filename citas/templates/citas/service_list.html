@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<div class="container">
 <h1 class="h1">Servicios disponibles</h1>
 <ul>
 {% for service in object_list %}
@@ -12,5 +13,6 @@
     <li>En este momento no hay ningún servicio disponible para su cita por Internet.</li>
 {% endfor %}
 </ul>
+</div>
 
 {% endblock %}
