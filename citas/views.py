@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView, DeleteView
@@ -35,6 +35,14 @@ class AppointmentView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
+        return context
+
+class AppointmentDelete(DeleteView):
+    model = Appointment
+    success_url = reverse_lazy('service-list')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["dni"] = self.kwargs['dni']
         return context
     
 

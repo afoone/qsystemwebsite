@@ -18,6 +18,7 @@ from . import views
 
 urlpatterns = [
     path('<int:pk>/', views.AppointmentView.as_view(), name = 'appointment-detail'),
+    path('<int:pk>/<dni>/delete/', views.AppointmentDelete.as_view(), name = 'appointment-delete'),
     path('create/<cita_time>/<cita_date>/', views.AppointmentCreate.as_view(), name = "appointment-create"),
     path('', views.ServiceList.as_view(), name = "service-list"),
 ]

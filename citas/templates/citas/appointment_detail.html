@@ -1,6 +1,23 @@
-<h1>CITA CONFIRMADA</h1>
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="alert alert-warning" role="alert">CITA CONFIRMADA</div>
 <p>Le será enviado un correo-electrónico con los datos de la cita. Muchas gracias.</p>
-<p>DNI : {{ object.dni }}</p>
-<p>Correo-e: {{ object.email }}</p>
-<p>Fecha: {{ object.fecha|date }}</p>
-<p>Hora: {{ object.hora|time }}</p>
+
+
+<div class="card" style="width: 100%%;    margin-top: 1em;">
+  <div class="card-body">
+    <h4 class="card-title">DNI : {{ object.dni }}</h4>
+    <p class="card-text">
+    <ul>
+        <li>Correo-e: {{ object.email }}</li>
+        <li>Fecha: {{ object.fecha|date }}</li>
+        <li>Hora: {{ object.hora|time }}</li>
+        </ul>
+    </p>
+  </div>
+</div>
+
+
+{% endblock %}
