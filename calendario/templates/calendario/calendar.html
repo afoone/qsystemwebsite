@@ -1,6 +1,15 @@
 
 {% extends 'core/base.html' %}
 
+{% block header %}
+
+	{% load static %}
+
+	<link rel="stylesheet" href=" {% static 'core/css/reset.css' %}"> <!-- CSS reset -->
+	<link rel="stylesheet" href="{% static 'core/css/style.css' %}"> <!-- Resource style -->
+
+{% endblock header %}
+
 {% block content %}
 
 
@@ -175,5 +184,10 @@
 
 	<div class="cover-layer"></div>
 </div> <!-- .cd-schedule -->
+
+
+<script src="{% static 'core/js/modernizr.js' %}"></script>
+
+<script src="{% static 'core/js/main.js' %}"></script> <!-- Resource jQuery -->
 
 {% endblock content %}
