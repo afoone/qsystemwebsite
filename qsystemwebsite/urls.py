@@ -18,11 +18,13 @@ from django.urls import path
 from core import views
 from django.conf import settings
 from citas import urls as citasurls
+from citas.views import ServiceList
 from django.urls import include
 from calendario import urls as calendar_urls
+from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name = "home"),
+    path('', ServiceList.as_view(), name = "home"),
     path('appointment/', include(citasurls)),
     path('calendar/', include(calendar_urls))
 ]
