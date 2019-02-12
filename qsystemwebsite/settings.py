@@ -145,3 +145,10 @@ STATIC_URL = '/static/'
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+# correo - e
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'a8fc9b957d599d'
+EMAIL_HOST_PASSWORD = '2ca5e65f731317'
+EMAIL_PORT = '2525'

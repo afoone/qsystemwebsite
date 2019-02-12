@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.utils import timezone
 from django.urls import reverse, reverse_lazy
+from django.core.mail import send_mail
+
 
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView, DeleteView
@@ -26,9 +28,30 @@ class AppointmentCreate(CreateView):
     def get_initial(self):
         fill_date = datetime.datetime.strptime(self.kwargs['cita_date'], "%d%m%y").date()
         fill_hour = datetime.datetime.strptime(self.kwargs['cita_time'], "%H:%M").time()
-        
-        print(fill_date)
         return { 'fecha': fill_date, 'hora':fill_hour}
+    def form_valid(self, form):
+        response = super(AppointmentCreate, self).form_valid(form)
+        body = "Su cita para el DNI "+self.object.dni+" está CONFIRMADA con los siguientes datos:\n<br/>"
+        body+= "\n Fecha:"+self.object.fecha.strftime('%d/%m/%Y')+"<br/>"
+        body+= "\n Hora:"+self.object.hora.strftime('%H:%M')+"<br/>"
+        body+= """
+        Cuando llegue a la dirección territorial ha de dirigirse al kiosco y en el botón <br/>
+        "cita por Internet" deberá introducir el mismo número de DNI que ha indicado en <br/>
+        la reserva de la cita, sin letra.<br/>
+
+        Gracias por usar el servicio de cita por Internet.<br/>
+
+        """
+        body+= "Para anular la cita siga o copie el siguiente enlace en el navegador:\n<br/>"
+        url_to_delete = "http://tva.sistemadegestiondecolas.com/"+reverse('appointment-delete',kwargs={"pk":self.object.id, "dni":self.object.dni})
+        body+= "<a href='"+url_to_delete+"'>"+url_to_delete+"</a><br/>"
+        
+        send_mail(subject="Su cita para la Dirección Territorial",message = body, html_message=body, from_email= "tva@sistemadegestiondecolas.com", recipient_list=(self.object.email,) )
+
+        #email = EmailMessage(subject=, body=body,  from_email="territorial@sistemadegestiondecolas.com", to= (self.object.email,)   )
+        
+        #email.send()
+        return response
 
 class AppointmentView(DetailView):
     model = Appointment
