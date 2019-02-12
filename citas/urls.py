@@ -17,7 +17,7 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
+    path('<int:pk>/', views.AppointmentView.as_view(), name = 'appointment-detail'),
     path('create/<cita_time>/<cita_date>/', views.AppointmentCreate.as_view(), name = "appointment-create"),
     path('', views.ServiceList.as_view(), name = "service-list"),
-
 ]

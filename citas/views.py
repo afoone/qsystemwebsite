@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView, DeleteView
 from django.views.generic.list import ListView
 from .models import Appointment, Service
 from .forms import CreateAppointmentForm
@@ -21,7 +22,7 @@ class AppointmentCreate(CreateView):
         context['time'] = self.kwargs['cita_time']
         return context
     def get_success_url(self):
-        return reverse('service-list')
+        return reverse('appointment-detail', kwargs={'pk': self.object.id})
     def get_initial(self):
         fill_date = datetime.datetime.strptime(self.kwargs['cita_date'], "%d%m%y").date()
         fill_hour = datetime.datetime.strptime(self.kwargs['cita_time'], "%H:%M").time()
@@ -29,6 +30,12 @@ class AppointmentCreate(CreateView):
         print(fill_date)
         return { 'fecha': fill_date, 'hora':fill_hour}
 
+class AppointmentView(DetailView):
+    model = Appointment
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
     
 
 class ServiceList(ListView):
