@@ -7,10 +7,11 @@ class CreateAppointmentForm(forms.ModelForm):
     email = forms.EmailField(label = "Correo-e", required = True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     fecha = forms.DateField(required = True, widget=forms.HiddenInput())
     hora = forms.TimeField(required = True, widget=forms.HiddenInput())
+    service_id = forms.IntegerField(required = True, widget=forms.HiddenInput())
 
     class Meta:
         model = Appointment
-        fields = ('dni', 'email', 'fecha', 'hora',)
+        fields = ('dni', 'email', 'fecha', 'hora', 'service_id')
 
     def clean_email(self):
         #print("Comprobando si ya tenía una cita")

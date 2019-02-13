@@ -24,7 +24,7 @@ import datetime
 class AppointmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Appointment
-        fields = ('dni', 'fecha', 'hora', 'email')
+        fields = ('dni', 'fecha', 'hora', 'email', 'service_id')
 
 # ViewSets define the view behavior.
 class AppointmentViewSet(viewsets.ModelViewSet):
@@ -43,6 +43,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('<int:pk>/', views.AppointmentView.as_view(), name = 'appointment-detail'),
     path('<int:pk>/<dni>/delete/', views.AppointmentDelete.as_view(), name = 'appointment-delete'),
-    path('create/<cita_time>/<cita_date>/', views.AppointmentCreate.as_view(), name = "appointment-create"),
+    path('create/<service_id>/<cita_time>/<cita_date>/', views.AppointmentCreate.as_view(), name = "appointment-create"),
     path('', views.ServiceList.as_view(), name = "service-list"),
 ]

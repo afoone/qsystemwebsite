@@ -19,7 +19,6 @@ class AppointmentCreate(CreateView):
     form_class = CreateAppointmentForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(self.kwargs)
         context["date"] = self.kwargs['cita_date']
         context['time'] = self.kwargs['cita_time']
         return context
@@ -28,7 +27,8 @@ class AppointmentCreate(CreateView):
     def get_initial(self):
         fill_date = datetime.datetime.strptime(self.kwargs['cita_date'], "%d%m%y").date()
         fill_hour = datetime.datetime.strptime(self.kwargs['cita_time'], "%H:%M").time()
-        return { 'fecha': fill_date, 'hora':fill_hour}
+        fill_service_id = self.kwargs['service_id']
+        return { 'fecha': fill_date, 'hora':fill_hour, 'service_id': fill_service_id}
     def form_valid(self, form):
         response = super(AppointmentCreate, self).form_valid(form)
         body = "Su cita para el DNI "+self.object.dni+" está CONFIRMADA con los siguientes datos:\n<br/>"
