@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from qsystemwebsite import settings
 from citas.models import Service, Appointment
 from .models import CalendarConfig
@@ -19,6 +19,10 @@ def calendar(request, service_id, actual_week):
     lastmonday = today - datetime.timedelta(days=today.weekday())
     actual_service = s.first()    
     available_dates = get_render_vector(today, actual_week)
+
+    # redirigimos a la siguiente página si la primera no tiene huecos libres
+    if not available_dates[4]:
+        return redirect('service-calendar',  service_id, actual_week+1)
 
     
     context = {

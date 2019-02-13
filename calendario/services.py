@@ -31,8 +31,6 @@ def get_occupation(lastmonday, nextmonday, max_appointments_per_slot):
         print(occupations)
 
         occupated = {}
-        print("max pwer slot")
-        print(max_appointments_per_slot)
         for day in occupations:
                 slotting = []
                 for slot in occupations[day]:
@@ -51,8 +49,6 @@ def get_occupation(lastmonday, nextmonday, max_appointments_per_slot):
 
 # Devuelve un elemento que para la semana actual dice qué elementos hay que renderizar y cuales no
 def get_render_vector(today, week):
-        print("render vector, week")
-        print(week)
         if week > 0:
                 return [True, True, True, True, True]
         else:
