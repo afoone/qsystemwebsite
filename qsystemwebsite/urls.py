@@ -14,19 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from core import views
 from django.conf import settings
 from citas import urls as citasurls
 from citas.views import ServiceList
-from django.urls import include
 from calendario import urls as calendar_urls
 from django.views.generic import RedirectView
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ServiceList.as_view(), name = "home"),
     path('appointment/', include(citasurls)),
-    path('calendar/', include(calendar_urls))
+    path('calendar/', include(calendar_urls)),
+    path(r'^api-auth/', include('rest_framework.urls')),
 ]
 
 if settings.DEBUG:

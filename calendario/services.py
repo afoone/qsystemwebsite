@@ -34,11 +34,7 @@ def get_occupation(lastmonday, nextmonday, max_appointments_per_slot):
         for day in occupations:
                 slotting = []
                 for slot in occupations[day]:
-                        print(day)
-                        print(slot['total'])
                         if slot['total'] >= max_appointments_per_slot:  
-                                print('total')
-                                print(slot['total'])
                                 slotting.append(slot['hora'].strftime('%H:%M'))
                 occupated[day] = slotting
                 
@@ -54,9 +50,7 @@ def get_render_vector(today, week):
         else:
                 
                 lastmonday = today - datetime.timedelta(days=today.weekday())
-                print (lastmonday)
                 tuesday = today - datetime.timedelta(days=today.weekday()-1)
-                print(tuesday)
                 wednesday = today - datetime.timedelta(days=today.weekday()-2)
                 thursday = today - datetime.timedelta(days=today.weekday()-3)
                 friday = today - datetime.timedelta(days=today.weekday()-4)

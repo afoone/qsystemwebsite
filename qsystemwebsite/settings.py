@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'core',
     'citas',
     'calendario',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -152,3 +154,12 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = 'a8fc9b957d599d'
 EMAIL_HOST_PASSWORD = '2ca5e65f731317'
 EMAIL_PORT = '2525'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
