@@ -12,7 +12,8 @@ services:
 
   web:
     build: .
-#    environment:
+    environment:
+      -  "VIRTUAL_HOST=qsystem.mainserver.iprocuratio.com"
 #      # General settings
 #      - DEBUG=off
 #      - SECRET_KEY=yre6yb4#vy#s)(_*1j+a2g=cju1v(2d()otx71uje)538zg%t-
@@ -33,3 +34,7 @@ services:
 networks: 
   qsystem:
     driver: bridge
+  frontnet:
+    external:
+      name: frontnet
+

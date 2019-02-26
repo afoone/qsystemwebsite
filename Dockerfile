@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 #RUN chmod +x /code/docker-scripts/docker-entrypoint-web.sh
 #RUN chmod +x /code/docker-scripts/docker-entrypoint-tasks.sh
 EXPOSE 8000
-CMD ["python", "manage.py", "runserver"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
