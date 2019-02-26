@@ -7,3 +7,29 @@ services:
       - "MYSQL_DATABASE=booking"
     ports: 
       - "3306:3306"
+    networks:
+      - qsystem
+
+  web:
+    build: .
+#    environment:
+#      # General settings
+#      - DEBUG=off
+#      - SECRET_KEY=yre6yb4#vy#s)(_*1j+a2g=cju1v(2d()otx71uje)538zg%t-
+#      # Database settings
+#      - DATABASE_FENIX=psql://postgres:postgres12345@db:5432/fenix
+    ports:
+       - "8000:8000"
+    #volumes:
+     # - ".:/code"
+     # - static_volume:/code/static
+     # - media_volume:/code/media
+   # command: 
+   #   /code/docker-scripts/docker-entrypoint.sh
+    depends_on:
+      - db  
+    networks: 
+      - qsystem
+networks: 
+  qsystem:
+    driver: bridge

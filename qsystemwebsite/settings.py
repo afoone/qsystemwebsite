@@ -155,6 +155,12 @@ EMAIL_HOST_USER = 'a8fc9b957d599d'
 EMAIL_HOST_PASSWORD = '2ca5e65f731317'
 EMAIL_PORT = '2525'
 
+# EMAIL_HOST = 'authsmtp.gestiondecolasdeespera.com'
+# EMAIL_HOST_USER = 'smtp@gestiondecolasdeespera.com'
+# EMAIL_HOST_PASSWORD = 'iProc@1984'
+# EMAIL_PORT = '25'
+
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
