@@ -33,7 +33,7 @@ SECRET_KEY = 'i+a&ye8$!w^l$c#x@-pz$1$ugivo-a=t-8q0n(8f85a4#($-(x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.gestiondecolasdeespera.com', '.iprocuratio.com']
 
 
 # Application definition
