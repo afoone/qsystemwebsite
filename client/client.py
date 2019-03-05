@@ -4,13 +4,11 @@ import urllib.request
 from mysql.connector import errorcode
 
 # variables
-URL = "http://localhost:8000/appointment/api/appointments/"
+URL = "http://territorial-valencia.gestiondecolasdeespera.com/appointment/api/appointments/"
 DATABASE_HOST = "localhost"
 DATABASE_USER = "root"
 DATABASE_PASSWD = "root"
 DATABASE_NAME = "qsystem"
-
-
 
 
 try:

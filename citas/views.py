@@ -45,7 +45,7 @@ class AppointmentCreate(CreateView):
 
         """
         body+= "Para anular la cita siga o copie el siguiente enlace en el navegador:\n<br/>"
-        url_to_delete = "http://tva.gestiondecolasdeespera.com/"+reverse('appointment-delete',kwargs={"pk":self.object.id, "dni":self.object.dni})
+        url_to_delete = "http://territorial-valencia.gestiondecolasdeespera.com/"+reverse('appointment-delete',kwargs={"pk":self.object.id, "dni":self.object.dni})
         body+= "<a href='"+url_to_delete+"'>"+url_to_delete+"</a><br/>"
         
         send_mail(subject="Su cita para la Dirección Territorial",message = body, html_message=body, from_email= "territorial@gestiondecolasdeespera.com", recipient_list=(self.object.email,) )
