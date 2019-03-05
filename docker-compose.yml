@@ -25,6 +25,7 @@ services:
       - db  
     networks: 
       - qsystem
+      - frontnet
 networks: 
   qsystem:
     driver: bridge
