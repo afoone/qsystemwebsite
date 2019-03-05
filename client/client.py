@@ -12,11 +12,11 @@ DATABASE_NAME = "qsystem"
 
 
 try:
-	print("triying to connectcat cli")
+	print("triying to connect cli")
 	cnx = mysql.connector.connect(user=DATABASE_USER, 
 								  password=DATABASE_PASSWD,
                               	  host=DATABASE_HOST, 
-								  port=3307,
+								  port=3306,
                                   database=DATABASE_NAME)
 	print("connected")
 	# Recuperamos los elementos del servidor
