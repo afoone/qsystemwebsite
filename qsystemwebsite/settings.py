@@ -33,7 +33,7 @@ SECRET_KEY = 'i+a&ye8$!w^l$c#x@-pz$1$ugivo-a=t-8q0n(8f85a4#($-(x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.gestiondecolasdeespera.com', '.iprocuratio.com']
+ALLOWED_HOSTS = ['.gestiondecolasdeespera.com', '.iprocuratio.com', 'localhost']
 
 
 # Application definition
@@ -150,15 +150,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 # correo - e
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'a8fc9b957d599d'
-EMAIL_HOST_PASSWORD = '2ca5e65f731317'
-EMAIL_PORT = '2525'
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_HOST_USER = 'a8fc9b957d599d'
+# EMAIL_HOST_PASSWORD = '2ca5e65f731317'
+# EMAIL_PORT = '2525'
 
-# EMAIL_HOST = 'authsmtp.gestiondecolasdeespera.com'
-# EMAIL_HOST_USER = 'smtp@gestiondecolasdeespera.com'
-# EMAIL_HOST_PASSWORD = 'iProc@1984'
-# EMAIL_PORT = '25'
+EMAIL_HOST = 'authsmtp.gestiondecolasdeespera.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'smtp@gestiondecolasdeespera.com'
+EMAIL_HOST_PASSWORD = 'iProc@1984'
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'Territorial de Valencia <territorial-valencia@gestiondecolasdeespera.com>'
 
 
 REST_FRAMEWORK = {
