@@ -55,5 +55,9 @@ class CalendarConfig(models.Model):
     slotSize = models.IntegerField(verbose_name="Tamaño del hueco en minutos", default=15)
     appointmentsPerSlot = models.IntegerField(verbose_name="Máximo número de citas por tramo",  default=1)
 
+    def __str__(self):
+        return  str(self.service) + " cada " + str(self.slotSize) + " minutos, "+ str(self.appointmentsPerSlot) + " citas por hueco"
+    
+
 
     

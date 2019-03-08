@@ -5,6 +5,7 @@
 <div class="container">
 <div class="alert alert-warning" role="alert">CITA CONFIRMADA</div>
 <p>Le será enviado un correo-electrónico con los datos de la cita. Muchas gracias.</p>
+<p>Li serà enviat un correu-electrònic amb les dades de la cita. Moltes gràcies</p>
 
 
 <div class="card" style="width: 100%%;    margin-top: 1em;">
@@ -12,9 +13,9 @@
     <h4 class="card-title">DNI : {{ object.dni }}</h4>
     <p class="card-text">
     <ul>
-        <li>Correo-e: {{ object.email }}</li>
-        <li>Fecha: {{ object.fecha|date }}</li>
-        <li>Hora: {{ object.hora|time }}</li>
+        <li>e-mail: {{ object.email }}</li>
+        <li>Fecha / Data: {{ object.fecha | date:"d / m / Y"}}</li>
+        <li>Hora: {{ object.hora|time:"H:i" }}</li>
         </ul>
     </p>
   </div>
