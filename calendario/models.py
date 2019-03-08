@@ -49,6 +49,9 @@ class CalendarTime(models.Model):
     def __str__(self):
         return self.startTime + " a " + self.endTime
 
+
+    
+
 class CalendarConfig(models.Model):
     time = models.ManyToManyField(CalendarTime)
     service = models.ForeignKey(citas_models.Service, on_delete=models.CASCADE)
@@ -57,6 +60,16 @@ class CalendarConfig(models.Model):
 
     def __str__(self):
         return  str(self.service) + " cada " + str(self.slotSize) + " minutos, "+ str(self.appointmentsPerSlot) + " citas por hueco"
+
+
+class CalendarException(models.Model):
+    date = models.DateField(verbose_name="Fecha de festivo", auto_now=False, auto_now_add=False)
+    calendar = models.ForeignKey(CalendarTime, verbose_name="Calendario", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.date)
+    
+
     
 
 

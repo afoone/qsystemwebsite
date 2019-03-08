@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from qsystemwebsite import settings
 from citas.models import Service, Appointment
 from .models import CalendarConfig
-from .services import get_occupation, get_render_vector
+from .services import get_occupation, get_render_vector, get_exceptions_vector
 import datetime
 
 # Create your views here.
@@ -15,15 +15,24 @@ def calendar(request, service_id, actual_week):
         today = today + datetime.timedelta(days=-today.weekday(), weeks=actual_week)
     
     print (today)
+    print (actual_week)
     nextmonday = today + datetime.timedelta(days=-today.weekday(), weeks=1)
     lastmonday = today - datetime.timedelta(days=today.weekday())
     actual_service = s.first()    
     available_dates = get_render_vector(today, actual_week)
 
+    print("fechas disponibles")
+    print(available_dates)
+
     # redirigimos a la siguiente página si la primera no tiene huecos libres
     if not available_dates[4]:
         return redirect('service-calendar',  service_id, actual_week+1)
 
+    # Contemplamos los festivos
+    available_dates = list(map(lambda x, y: x and y, available_dates, get_exceptions_vector(actual_calendar.time.first(), lastmonday, nextmonday)))
+    
+    print("available dates")
+    print(available_dates)
     
     context = {
         'company_name': "Territorial de Valencia",

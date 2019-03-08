@@ -1,5 +1,6 @@
 from django.db.models import Count
 from citas.models import Appointment
+from .models import CalendarException
 import datetime
 
 
@@ -64,3 +65,14 @@ def get_render_vector(today, week):
                 available_dates.append(friday>today)
 
                 return available_dates
+
+
+def get_exceptions_vector(calendar, date_init, date_end):
+        result = []
+        for single_date in (date_init + datetime.timedelta(n) for n in range(5)):
+                objects = CalendarException.objects.filter(date__range=[single_date, single_date]).first()
+                if (objects):
+                        result.append(False)
+                else:
+                        result.append(True)
+        return result
