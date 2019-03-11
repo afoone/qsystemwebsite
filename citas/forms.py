@@ -3,7 +3,7 @@ from .models import Appointment
 from datetime import datetime
 
 class CreateAppointmentForm(forms.ModelForm):
-    dni = forms.CharField(label = "DNI / NIE", required = True, widget=forms.TextInput(attrs={'class': 'form-control'}), min_length=3, max_length=100)
+    dni = forms.CharField(label = "DNI / NIE (SIN LETRA)", required = True, widget=forms.TextInput(attrs={'class': 'form-control'}), min_length=3, max_length=100)
     email = forms.EmailField(label = "Correo-e", required = True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     fecha = forms.DateField(required = True, widget=forms.HiddenInput())
     hora = forms.TimeField(required = True, widget=forms.HiddenInput())
