@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Clase para citas
 class Appointment(models.Model):
     dni = models.CharField(verbose_name="DNI o NIE (Sin letra)", max_length = 15)
     email = models.EmailField(verbose_name="Dirección de correo donde se enviará la confirmación", max_length=254)
@@ -13,9 +13,8 @@ class Appointment(models.Model):
 
 
 class Service(models.Model):
-    serviceID = models.IntegerField(verbose_name="Número de servicio en el sistema")
+    serviceID = models.BigIntegerField(verbose_name="Número de servicio en el sistema")
     description = models.TextField(verbose_name="Descripción")
     weeks_in_advance = models.IntegerField (verbose_name="Semanas en las que se puede reservar con antelación", default=2)
     def __str__(self):
         return self.description
-    

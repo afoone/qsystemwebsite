@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from core import views
 from django.conf import settings
 from citas import urls as citasurls
@@ -30,7 +30,7 @@ urlpatterns = [
     path('', ServiceList.as_view(), name = "home"),
     path('appointment/', include(citasurls)),
     path('calendar/', include(calendar_urls)),
-    path(r'^api-auth/', include('rest_framework.urls')),
+    re_path(r'^api-auth/', include('rest_framework.urls')),
 ]
 
 if settings.DEBUG:
