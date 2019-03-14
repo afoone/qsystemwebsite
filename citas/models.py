@@ -6,12 +6,10 @@ class Appointment(models.Model):
     email = models.EmailField(verbose_name="Dirección de correo donde se enviará la confirmación", max_length=254)
     fecha = models.DateField(verbose_name="Fecha de la cita")
     hora = models.TimeField(verbose_name="Hora de la cita", default='09:00')
-    service_id = models.IntegerField(verbose_name="Número de servicio en el sistema", default=2)
+    service_id = models.BigIntegerField(verbose_name="Número de servicio en el sistema", default=2)
     def __str__(self):
         return self.dni
     
-
-
 class Service(models.Model):
     serviceID = models.BigIntegerField(verbose_name="Número de servicio en el sistema")
     description = models.TextField(verbose_name="Descripción")
