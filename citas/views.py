@@ -27,8 +27,15 @@ class AppointmentCreate(CreateView):
     def get_initial(self):
         fill_date = datetime.datetime.strptime(self.kwargs['cita_date'], "%d%m%y").date()
         fill_hour = datetime.datetime.strptime(self.kwargs['cita_time'], "%H:%M").time()
+
+        # Hay que recuperar el número de servicio DEL SISTEMA
         fill_service_id = self.kwargs['service_id']
+        service_obj = Service.objects.get(pk=fill_service_id)
+        print("recuperando modelo")
+        print (service_obj.serviceID)
+        fill_service_id = service_obj.serviceID
         return { 'fecha': fill_date, 'hora':fill_hour, 'service_id': fill_service_id}
+
     def form_valid(self, form):
         response = super(AppointmentCreate, self).form_valid(form)
         body = "Su cita para el DNI "+self.object.dni+" está CONFIRMADA con los siguientes datos:\n<br/>"
